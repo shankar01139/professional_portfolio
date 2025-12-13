@@ -1,0 +1,42 @@
+<section class="project-info-container">
+    <div *ngIf="project" class="project-content">
+
+        <div class="project-hero-header">
+            <img [src]="project.headerImage" [alt]="project.title + ' Background'" class="project-header-bg">
+            
+            <div class="header-overlay-content container">
+                <p class="project-category">{{ project.category }}</p>
+                <h1 class="project-title">{{ project.title }}</h1>
+            </div>
+            
+            <div class="project-summary container">
+                <p>{{ project.summary }}</p>
+            </div>
+        </div>
+        
+        <div class="main-mockup-wrapper container">
+            <img [src]="project.mockups[0].url" [alt]="project.mockups[0].alt" class="main-mockup">
+        </div>
+
+        <div class="project-body-sections container">
+            <div *ngFor="let section of project.sections; let i = index" class="detail-section">
+                <h2 class="section-heading">{{ section.title }}</h2>
+                <p class="section-text">{{ section.content }}</p>
+                
+                <div *ngIf="i === 1" class="section-image-grid"> 
+                    <img src="assets/wireframe_small_1.png" alt="Wireframe 1">
+                    <img src="assets/wireframe_small_2.png" alt="Wireframe 2">
+                </div>
+            </div>
+            
+            <div class="thanks-wrapper">
+                <p class="thanks-text">Thanks for Watching</p>
+            </div>
+        </div>
+
+    </div>
+    
+    <div *ngIf="!project" class="loading-message container">
+        <p>Loading project details...</p>
+    </div>
+</section>

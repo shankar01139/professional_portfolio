@@ -1,0 +1,257 @@
+@import '../../../styles.scss';
+$background-dark: #000;
+$text-light: #fff;
+$text-fade: rgba(255, 255, 255, 0.7);
+$text-accent: #e5097f; 
+$behance-blue: #1769ff;
+$dribbble-pink: #ea4c89;
+$linkedin-blue: #0a66c2;
+
+.footer-container {
+  background-color: $background-dark;
+  color: $text-light;
+//   padding: 80px 20px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden; 
+  font-family: Arial, sans-serif;
+}
+
+.content-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+//   padding-bottom: 50px; 
+}
+
+// --- Contact Info ---
+.contact-info {
+  margin-bottom: 20px;
+  
+  .connect-text {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .email-link {
+    color: $text-light;
+    text-decoration: none;
+    border-bottom: 1px solid $text-light;
+    transition: color 0.3s;
+    
+    &:hover {
+      color: $text-fade;
+    }
+  }
+
+  .arrow-icon {
+    font-size: 1.5rem;
+    vertical-align: middle;
+    margin-left: 5px;
+    display: inline-block;
+    transition: transform 0.3s;
+    
+    .email-link:hover & {
+        transform: translateX(5px);
+    }
+  }
+
+  .phone-text {
+    color: $text-fade;
+    font-size: 1rem;
+  }
+}
+
+// --- Social Media ---
+.social-media {
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  
+  .social-label {
+    color: $text-fade;
+    font-size: 0.9rem;
+  }
+  
+  .social-icon {
+    display: inline-block;
+    color: $text-light;
+    font-size: 1.5rem;
+    transition: color 0.3s, transform 0.3s;
+    
+    .fa-behance { color: #1769ff; }
+    .fa-instagram { color: $text-accent; } 
+    .fa-linkedin-in { color: #0a66c2; }
+
+    &:hover {
+      transform: scale(1.1);
+      color: $text-fade;
+    }
+  }
+}
+
+// --- Navigation ---
+.separator {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 30px auto;
+    width: 80%;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 50px;
+  
+  .nav-link {
+    color: $text-light;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    
+    &:hover {
+      color: $text-fade;
+    }
+  }
+}
+
+// --- Copyright ---
+.copyright {
+    color: $text-fade;
+    font-size: 0.9rem;
+    margin-top: 20px;
+}
+
+// --- Back to Top Button ---
+.back-to-top-button {
+  position: absolute;
+  bottom: 100px;
+  right: 50px;
+  width: 50px;
+  height: 50px;
+  background-color: $text-light;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, background-color 0.3s;
+
+  .up-arrow {
+    color: $background-dark;
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: block;
+  }
+
+  &:hover {
+    transform: translateY(-5px) scale(1.05);
+    background-color: $text-fade;
+  }
+}
+
+// --- Large Faded Name (Stylistic Element in the Image) ---
+.footer-container::after {
+    content: "Pradeepkumar";
+    position: absolute;
+    bottom: -150px; 
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20rem; 
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.05); 
+    pointer-events: none; 
+    z-index: 0;
+    user-select: none;
+    font-family: serif; 
+}
+
+// --- Responsive Adjustments ---
+@media (max-width: 768px) {
+  .footer-nav {
+    flex-wrap: wrap;
+    gap: 20px;
+    
+    .nav-link {
+        flex-basis: 40%;
+    }
+  }
+  
+  .back-to-top-button {
+    right: 20px;
+    bottom: 20px;
+  }
+
+  .footer-container::after {
+    font-size: 10rem;
+    bottom: -50px;
+  }
+}
+.social-media {
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px; // Reduced gap for tighter spacing
+  
+  .social-label {
+    color: $text-fade;
+    font-size: 0.9rem;
+    margin-right: 15px; // Spacing between label and first icon
+  }
+  
+  // --- NEW: Icon Badge Styling ---
+  .social-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; // Makes it circular
+    transition: transform 0.3s, opacity 0.3s;
+    
+    .icon {
+        color: $text-light;
+        font-size: 1.2rem;
+    }
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  // --- Specific Colors (Backgrounds and Icon Colors) ---
+  .social-badge {
+    // Default/Fallback (e.g., Instagram needs a gradient, but we'll use a color here)
+    background-color: #e4405f; 
+  }
+
+  // Behance
+  a[href*="behance"] {
+    background-color: $behance-blue;
+    .icon { color: $text-light; }
+  }
+  
+  // Dribbble (Pink)
+  a[href*="dribbble"] {
+    background-color: $dribbble-pink;
+    .icon { 
+        color: $text-light; 
+        font-size: 1.5rem; // Dribbble icon is often larger
+    }
+  }
+  
+  // Instagram (Use solid color or rely on external styling for gradient)
+  a[href*="instagram"] {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    .icon { color: $text-light; }
+  }
+  
+  // LinkedIn
+  a[href*="linkedin"] {
+    background-color: $linkedin-blue;
+    .icon { color: $text-light; }
+  }
+}

@@ -1,0 +1,208 @@
+/* my-work.component.scss */
+
+@import '../../../styles.scss';
+
+// --- Section Background and Title ---
+.my-work-section { 
+    /* Set background to white for the section */
+    background-color: #ffffff; 
+}
+
+.title-wrapper { 
+    text-align: center; 
+    margin-bottom: 4rem; 
+}
+
+.section-title { 
+    font-size: 2.5rem; 
+    font-weight: 700; 
+    /* Text color for readability on white background */
+    color: #1f1f1f; 
+}
+
+// --- Project Grid Layout (Asymmetrical) ---
+
+.projects-grid {
+    display: grid;
+    /* 3-column layout for desktop */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 1.5rem;
+    grid-auto-rows: 350px; 
+    
+    @media (max-width: 1023px) {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    @media (max-width: 767px) {
+        grid-template-columns: 1fr; 
+        grid-auto-rows: 300px;
+    }
+}
+
+// --- Individual Project Card Styling ---
+
+.project-card {
+    background-color: #ffffff; /* Card background is white */
+    border-radius: 16px;
+    overflow: hidden; /* CRITICAL: Clips content that slides off-screen */
+    position: relative; 
+    border: 1px solid #e0e0e0; /* Light border to separate cards from white background */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft shadow */
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+    
+    /* ASYMMETRICAL GRID LOGIC: Span two columns for the wide card */
+    &.size-2 {
+        grid-column: span 2; 
+        @media (max-width: 767px) {
+            grid-column: span 1; 
+        }
+    }
+
+    &:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* --- 1. DEFAULT IMAGE CONTAINER (Covers the whole card) --- */
+.image-container {
+    width: 100%;
+    height: 100%;
+    position: absolute; 
+    top: 0;
+    left: 0;
+    z-index: 10; 
+    
+    .mockup-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        display: block; 
+        transition: transform 0.4s ease;
+        transform: scale(1.02); /* Initial subtle zoom */
+    }
+}
+
+/* --- 2. DEFAULT VISIBLE TITLE (Static text overlay) --- */
+.card-visible-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    
+    /* Semi-transparent background for readability over the image */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    z-index: 30; /* Above the image */
+    
+    .title-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #ffffff; 
+        margin: 0;
+    }
+}
+
+/* --- 3. SLIDING OVERLAY (The Description Content) --- */
+
+.card-hover-overlay {
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 40; /* Highest z-index */
+    
+    /* Initial State: Push the element down by 100% of its own height */
+    transform: translateY(100%); 
+    transition: transform 0.4s ease-out; 
+    
+    background-color: #ffffff; 
+    border-top: 5px solid $color-accent-pink; /* Visual separation line */
+}
+
+/* --- HOVER EFFECT: SLIDE UP AND SCALE IMAGE --- */
+
+.project-card:hover {
+    
+    // 1. Slide the content up (visible)
+    .card-hover-overlay {
+        transform: translateY(0); 
+    }
+    
+    // 2. Add subtle zoom-out effect on the image
+    .mockup-img {
+        transform: scale(1);
+    }
+}
+
+/* --- Overlay Content Styling (The text that slides up) --- */
+
+.card-content {
+    padding: 1.5rem;
+    color: #1f2937;
+    text-align: left;
+    
+    .category {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: $color-accent-purple;
+        margin-bottom: 0.5rem;
+    }
+
+    .card-details-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        line-height: 1.3;
+        margin-bottom: 0.5rem;
+    }
+
+    .view-link {
+        font-size: 0.9rem;
+        color: $color-accent-pink;
+        font-weight: 600;
+    }
+}
+
+/* --- Social Links Footer (Right Aligned) --- */
+.social-links-footer {
+    display: flex;
+    justify-content: flex-end; /* Align content to the right */
+    align-items: center;
+    gap: 15px; 
+    margin-top: 1rem; 
+    padding-bottom: 2rem;
+    width: 100%; /* Ensure the container spans the full content width */
+}
+
+.view-on-text {
+    font-size: 14px;
+    color: #333333; 
+    margin-right: 5px;
+}
+
+.social-icon {
+    display: inline-flex;
+    width: 30px; 
+    height: 30px;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: transform 0.2s;
+    background-size: 50%;      /* Scales the logo to 50% of the 40px container (20px) */
+    background-repeat: no-repeat;
+    background-position: center; /* Centers the image */
+    &:hover {
+        transform: translateY(-2px);
+    }
+}
+
+.behance-icon {
+    /* Behance blue color */
+    background-color: #1769FF; 
+    // background-image: url('../../../assets/behance.png');
+}
+
+.dribbble-icon {
+    /* Dribbble pink color/gradient */
+    background: radial-gradient(circle, #EA4C89 50%, #FFC1D8 100%); 
+    // background-image: url('../../../assets/dribble.png');
+}

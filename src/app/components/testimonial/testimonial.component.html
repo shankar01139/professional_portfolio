@@ -1,0 +1,53 @@
+<section class="testimonials-section">
+  <h2 class="section-title">What Our Clients Say</h2>
+  
+  <div class="testimonial-content">
+    
+    <div class="client-nav">
+      
+      <button class="nav-button up" (click)="prevTestimonial()">
+        <span class="arrow">↑</span>
+      </button>
+
+      <div class="photo-carousel-window" #photoWindow> 
+        
+        <div class="photo-list" #photoList> 
+          <div 
+            class="photo-container" 
+            *ngFor="let client of testimonials; let i = index"
+            [class.active]="i === currentIndex"
+            (click)="goToTestimonial(i)"
+            
+            [attr.data-index]="i"
+          >
+            <img [src]="client.photoUrl" [alt]="client.author" class="client-photo">
+            
+            <div class="client-badge" *ngIf="i === currentIndex">
+                <p>{{ client.company | slice:0:6 }}</p> 
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <button class="nav-button down" (click)="nextTestimonial()">
+        <span class="arrow">↓</span>
+      </button>
+      
+    </div>
+
+    <div class="quote-area only-text">
+      
+      <div class="quote-text-container">
+        <p class="quote-text">
+          <span [innerHTML]="activeTestimonial.quote | highlightText: activeTestimonial.highlights"></span>
+        </p>
+
+        <p class="author-details">
+          -**{{ activeTestimonial.author }}**, {{ activeTestimonial.role }}, {{ activeTestimonial.company }}
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>

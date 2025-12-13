@@ -1,0 +1,46 @@
+<footer class="footer-container">
+  
+  <div class="content-wrapper">
+    
+    <div class="contact-info">
+      <p class="connect-text">Lets Connect @ 
+        <a [href]="'mailto:' + email" class="email-link">
+          {{ email }} 
+          <span class="arrow-icon">→</span>
+        </a>
+      </p>
+      <p class="phone-text">Contact Me (India): {{ phone }}</p>
+    </div>
+    
+    <div class="social-media">
+      <span class="social-label">Social Media:</span>
+      <a 
+        *ngFor="let link of socialLinks" 
+        (click)="scrollToSection(link.href.substring(1))"
+        class="social-icon"
+      >
+        <span class="icon {{ link.iconClass }}"></span>
+      </a>
+    </div>
+    
+    <hr class="separator">
+    
+    <nav class="footer-nav">
+      <a 
+        *ngFor="let link of navLinks" 
+        [href]="link.href" 
+        class="nav-link"
+      >
+        {{ link.text }}
+      </a>
+    </nav>
+
+    <p class="copyright">{{ copyright }}</p>
+
+  </div>
+  
+  <button class="back-to-top-button" (click)="scrollToTop()">
+    <span class="up-arrow">↑</span>
+  </button>
+  
+</footer>

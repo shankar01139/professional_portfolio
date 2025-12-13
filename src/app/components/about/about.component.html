@@ -1,0 +1,25 @@
+<section class="about-section">
+  <div class="container about-grid">
+    
+    <div class="about-left-column">
+      <h4 class="section-tag">Who I Am</h4>
+      
+      <h2 class="about-headline">
+        Designing experiences <span class="highlight">that ease your pain</span> and interfaces that <span class="highlight">color your world</span>
+      </h2>
+      
+      <div class="about-stats-grid">
+        <div *ngFor="let stat of aboutStats" class="about-stat-item">
+          <p class="stat-value">{{ stat.value }}</p>
+          <p class="stat-label">{{ stat.label }}</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="about-right-column">
+      <p class="body-text">{{ bodyCopy1 }}</p>
+      <p class="body-text">{{ bodyCopy2 }}</p>
+    </div>
+    
+  </div>
+</section>

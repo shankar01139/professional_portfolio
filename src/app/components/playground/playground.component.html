@@ -1,0 +1,25 @@
+<section class="portfolio-container">
+  <div class="image-grid top-row">
+    <div 
+      class="item-card" 
+      *ngFor="let item of portfolioImages | slice:0:6"
+    >
+      <img [src]="item.src" [alt]="item.alt" class="item-image">
+      <span class="creative-badge" *ngIf="item.isCreative">eCreative</span>
+    </div>
+  </div>
+
+  <div class="center-text">
+    <h1 class="main-title">{{ mainTitle }}</h1>
+    <p class="sub-text">{{ subText }}</p>
+  </div>
+
+  <div class="image-grid bottom-row">
+    <div 
+      class="item-card" 
+      *ngFor="let item of portfolioImages | slice:6"
+    >
+      <img [src]="item.src" [alt]="item.alt" class="item-image">
+    </div>
+  </div>
+</section>

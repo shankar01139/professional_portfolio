@@ -1,0 +1,62 @@
+@import '../../../styles.scss';// Access global colors/variables
+
+$text-light: #fff; 
+$background-dark: #121212; // Or use your global $color-background
+
+.main-header {
+    // Positioning the header at the top of the viewport/section
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50; // High Z-index to ensure it sits above all content
+    padding: 1.5rem 2rem; 
+    box-sizing: border-box; 
+    
+    // Optional: If you want the header to have a dark background itself, use this:
+    // background-color: $background-dark; 
+
+    .header-container {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        width: 100%;
+        position: relative;
+    }
+
+    .overlay-name {
+        font-family: 'Publico Headline Web', serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: $text-light;
+        
+        // Positioning the name absolutely in the center of the container:
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 5; 
+    }
+
+    .availability {
+        display: flex;
+        align-items: center;
+        font-size: 0.85rem;
+        color: #00ff00;
+        z-index: 10; 
+        font-family: 'Inter', sans-serif; // Assuming a clean font for status
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00ff00;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            box-shadow: 0 0 5px #00ff00;
+        }
+    }
+    
+    .header-controls {
+        // Style for the right side (optional)
+        min-width: 40px; 
+    }
+}

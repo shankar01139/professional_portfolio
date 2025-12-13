@@ -1,0 +1,169 @@
+@import '../../../styles.scss';
+
+.about-section {
+    background-color: $color-background; 
+    position: relative;
+    /* Add the subtle grain background if not already global */
+    // background-image: radial-gradient(#222 1px, transparent 1px);
+    // background-size: 8px 8px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+
+    @media (min-width: 1024px) {
+        /* Desktop: Two columns, left is slightly wider/equal to right */
+        grid-template-columns: 1.1fr 0.9fr; 
+        gap: 5rem;
+    }
+}
+
+/* --- Left Column: Headline and Stats --- */
+
+.section-tag {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: $color-text-medium;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.about-headline {
+    font-size: 2.5rem;
+    line-height: 1.3;
+    font-weight: 400; /* Regular weight for the non-highlighted text */
+    color: $color-text-light;
+    // margin-bottom: 3rem;
+    
+    @media (min-width: 768px) {
+        font-size: 3.5rem;
+    }
+
+    .highlight {
+        font-weight: 700; /* Bold weight for the highlighted words */
+    }
+}
+
+/* --- Right Column: Body Copy --- */
+
+.body-text {
+    font-size: 1rem;
+    color: $color-text-medium;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    
+    /* Highlighted text within the body copy */
+    span.bold {
+        color: $color-text-light;
+        font-weight: 600;
+    }
+}
+
+/* --- Integrated Stats at the bottom of the Left Column --- */
+
+.about-stats-grid {
+    display: flex;
+    gap: 2rem;
+    // padding-top: 2rem;
+}
+
+.about-stat-item {
+    text-align: left;
+    
+    .stat-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: $color-text-light;
+        line-height: 1;
+        margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+        font-size: 0.85rem;
+        color: $color-text-medium;
+        text-transform: uppercase;
+    }
+}
+/* src/app/components/about/about.component.scss */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+
+    // FIX: Use grid-template-rows: auto 1fr for vertical alignment control
+    grid-template-rows: auto 1fr; 
+
+    @media (min-width: 1024px) {
+        grid-template-columns: 1.1fr 0.9fr; 
+        gap: 5rem;
+        
+        // FIX: Remove the explicit row definition if not strictly needed
+        grid-template-rows: none;
+    }
+}
+
+/* --- Left Column --- */
+
+.about-left-column {
+    // We can use flexbox here to align the inner elements vertically
+    display: flex;
+    flex-direction: column;
+}
+
+.section-tag {
+    // FIX: Push this tag to the top and ensure it doesn't interrupt the alignment too much
+    margin-bottom: 0.5rem;
+    padding-top: 0; 
+}
+
+
+/* --- Right Column: Body Copy --- */
+
+.about-right-column {
+    // FIX: Add top margin/padding on desktop to visually align it with the headline
+    @media (min-width: 1024px) {
+        // Adjust this value based on the exact height of the "Who I Am" tag + margin
+        padding-top: 3.5rem; 
+    }
+    
+    .body-text {
+        font-size: 1rem;
+        color: $color-text-medium;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* --- Integrated Stats at the bottom of the Left Column --- */
+.about-stats-grid {
+    // Ensure the stats are pushed to the bottom of the column if you used flexbox
+    margin-top: auto; 
+    // padding-top: 2rem;
+}
+/* src/app/components/about/about.component.scss */
+
+// ... (existing styles)
+
+.about-headline {
+    font-size: 2.2rem; /* Reduced base size */
+    line-height: 1.25; /* Tightened line height */
+    font-weight: 400; 
+    color: $color-text-light;
+    // margin-bottom: 3rem;
+    
+    @media (min-width: 768px) {
+        font-size: 2rem; /* Reduced size for tablets/small desktops */
+        line-height: 1.2;
+    }
+    
+    @media (min-width: 1200px) {
+        font-size: 2.5rem; /* Only use larger size on very wide screens */
+    }
+
+    .highlight {
+        font-weight: 700;
+    }
+}

@@ -1,0 +1,68 @@
+/* Global SCSS Variables */
+$color-background: #0a0a0a;
+$color-text-light: #e5e7eb;
+$color-text-medium: #9ca3af;
+$color-accent-purple: #a855f7;
+$color-accent-pink: #ec4899;
+$color-border: #222222;
+$text-accent: #e5097f; 
+$behance-blue: #1769ff;
+$dribbble-pink: #ea4c89;
+$linkedin-blue: #0a66c2;
+/* Global Styles and Font Setup */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@400;600;700&display=swap');
+
+* {
+  box-sizing: border-box; /* This ensures padding/border is included inside the defined width/height */
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: $color-text-light;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Reusable Global Container */
+.container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem;
+
+    @media (min-width: 640px) {
+        padding: 0 1.5rem;
+    }
+    @media (min-width: 1024px) {
+        padding: 0 2rem;
+    }
+    
+}
+
+/* Reusable Section Padding */
+// .section-padding {
+//     padding-top: 5rem;
+//     padding-bottom: 5rem;
+// }
+/* Add this CSS to your global styles.scss or a relevant component file */
+
+#my-work, #experience, #contact {
+    // Push the content down by the height of the fixed header
+    padding-top: 60px; /* Assuming header height is 60px */
+    margin-top: -60px; /* Pull the anchor point back up by the same amount */
+    
+    // Crucial for the anchor to work correctly with negative margin
+    &::before {
+        content: "";
+        display: block;
+        height: 60px;
+        margin-top: -60px; 
+    }
+}

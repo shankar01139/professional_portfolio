@@ -1,0 +1,83 @@
+@import '../../../styles.scss';
+
+// --- Background Change to White ---
+.journey-section {
+    background-color: #ffffff; 
+    padding: 1rem 0;
+}
+
+// --- Section Header Styling (Dark Text) ---
+
+.title-wrapper { text-align: center; margin-bottom: 4rem; }
+.section-tag { font-size: 1rem; color: #4b5563; text-transform: uppercase; margin-bottom: 0.5rem; }
+.section-title { font-size: 2.5rem; font-weight: 700; color: #1f2937; }
+
+// --- Timeline Line (Lighter Line) ---
+
+.timeline-line {
+    position: relative; width: 80%; max-width: 900px; height: 1px;
+    background-color: #d1d5db;
+    margin: 0 auto 2rem;
+    
+    .timeline-dot {
+        position: absolute; bottom: 0; transform: translateY(50%);
+        width: 10px; height: 10px; border-radius: 50%;
+        background-color: #6b7280;
+        transition: background-color 0.3s;
+
+        cursor: pointer; /* FIX: Indicates the dot is clickable */
+        user-select: none;
+        &:nth-child(1) { left: 0%; }       
+        
+        // Dot 2: 25% across the line
+        &:nth-child(2) { left: 25%; }      
+        
+        // Dot 3: 50% across the line (Center)
+        &:nth-child(3) { left: 50%; }      
+        
+        // Dot 4: 75% across the line
+        &:nth-child(4) { left: 75%; }      
+        
+        // Dot 5: End of the line
+        &:nth-child(5) { left: 100%; }
+
+        &.active { background-color: $color-accent-pink; box-shadow: 0 0 10px rgba($color-accent-pink, 0.5); }
+    }
+}
+
+// --- Job Card Carousel Styling (Dark Card on White Background) ---
+
+.job-card-carousel { display: flex; flex-direction: column; align-items: center; }
+
+.job-card {
+    background-color: #1f2937; /* Dark card background */
+    border-radius: 12px; padding: 2rem; width: 100%; max-width: 650px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+    text-align: center; margin-bottom: 3rem; 
+    
+    cursor: pointer; 
+    user-select: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    &:hover:not(.last-card) {
+        transform: translateY(-5px); 
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    }
+    
+    &.last-card { cursor: default; opacity: 0.9; }
+}
+
+.status-indicator { display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 600; color: #00ff00; margin-bottom: 1rem; }
+.status-dot { width: 8px; height: 8px; background-color: #00ff00; border-radius: 50%; margin-right: 0.5rem; box-shadow: 0 0 5px #00ff00; }
+.job-role { font-size: 1rem; color: #9ca3af; text-transform: uppercase; margin-bottom: 0.5rem; }
+.job-company { font-size: 1.5rem; font-weight: 700; color: $color-text-light; margin-bottom: 0.25rem; }
+.job-powered { font-size: 0.8rem; color: #9ca3af; margin-bottom: 1rem; }
+.job-duration {
+    font-size: 0.9rem; color: $color-accent-purple; padding: 0.5rem 0; margin: 1rem 0;
+    border-top: 1px solid lighten(#1f2937, 15%); border-bottom: 1px solid lighten(#1f2937, 15%);
+    display: inline-block;
+}
+.job-description {
+    font-size: 0.95rem; color: #d1d5db; line-height: 1.6; text-align: left;
+    margin-top: 2rem; padding-top: 1rem; border-top: 1px solid lighten(#1f2937, 15%);
+}

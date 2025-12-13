@@ -1,0 +1,311 @@
+@import '../../../styles.scss';
+
+// Font Configuration (Publico Headline Web assumed to be loaded)
+$font-name: 'Publico Headline Web', serif;
+$font-size-desktop: 10rem; // Example: Adjust for very large screens
+$font-size-tablet: 7rem;
+$font-size-mobile: 4rem;
+$color-text-title: rgba($color-text-light, 0.9);
+
+.hero-section {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh; // Ensure it takes full viewport height
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-background;
+
+    // Background Grain/Dot Pattern
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(#222 1px, transparent 1px);
+        background-size: 8px 8px;
+        opacity: 0.2; // Adjust opacity for subtlety
+        z-index: 1;
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 1600px; // Allow for wider content
+    padding: 2rem; // Add some padding
+    display: flex; // Use flexbox for main content alignment
+    justify-content: center;
+    align-items: flex-end; // Align items to the bottom
+    height: 100vh; // Fill viewport height to allow absolute positioning within
+}
+
+// --- Header Overlay (Status and Centered Name) ---
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+    padding: 1.5rem 2rem; // More padding for header
+    box-sizing: border-box; // Include padding in width calculation
+
+    .header-container {
+        display: flex;
+        justify-content: space-between; // Push items to ends
+        align-items: center;
+        width: 100%;
+    }
+
+    .overlay-name {
+        font-family: 'Inter', sans-serif; // Assuming a clean sans-serif for this
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: $color-text-light;
+    }
+
+    .availability {
+        display: flex;
+        align-items: center;
+        font-size: 0.85rem;
+        color: #00ff00;
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00ff00;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            box-shadow: 0 0 5px #00ff00;
+        }
+    }
+}
+
+// --- Layered Text Styling (Main Positioning Container) ---
+.text-layers {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); // Center it
+    z-index: 5; // Behind the image initially
+    width: 100%;
+    max-width: 1200px; // Limit text width
+    text-align: center; // Center text elements by default
+
+    @media (min-width: 1024px) {
+        text-align: left; // Align left on larger screens
+        left: 55%; // Shift left to make room for portrait
+        transform: translate(-50%, -50%);
+    }
+
+    .greeting-text {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.5rem;
+        color: $color-text-medium;
+        font-weight: 500;
+        position: absolute; // Absolute positioning relative to .text-layers
+        top: -80px; // Adjust to move "Hey, I am" further up
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 15;
+        white-space: nowrap;
+
+        @media (min-width: 1024px) {
+            left: 0;
+            transform: none;
+            font-size: 1.8rem;
+        }
+        @media (max-width: 767px) {
+            top: -100px;
+            font-size: 1.2rem;
+        }
+    }
+
+    .main-title {
+        font-family: $font-name;
+        font-weight: 700;
+        line-height: 0.9;
+        letter-spacing: -2px; // Tighten letter spacing
+        color: $color-text-title;
+        mix-blend-mode: screen;
+        margin: 0;
+        white-space: nowrap;
+        position: relative;
+        z-index: 5;
+
+        font-size: $font-size-mobile; // Default mobile size
+
+        @media (min-width: 768px) {
+            font-size: $font-size-tablet;
+        }
+        @media (min-width: 1024px) {
+            font-size: 8rem; // Adjusted for better fit
+        }
+        @media (min-width: 1400px) {
+            font-size: $font-size-desktop;
+        }
+    }
+
+    // --- Floating Labels (UI, UX, Role) ---
+    .label, .role-label {
+        position: absolute;
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        opacity: 0.3;
+        color: $color-text-medium;
+        white-space: nowrap; // Prevent wrapping
+    }
+
+    .ui-label {
+        font-size: 2rem; // Larger
+        top: 0; // Relative to .text-layers
+        right: 25%; // Shift right
+        transform: translate(50%, -50%) rotate(-10deg); // Rotate and adjust
+        @media (min-width: 1024px) {
+            font-size: 2rem;
+            right: 35%;
+            top: -20%;
+        }
+    }
+
+    .ux-label {
+        font-size: 3.5rem; // Larger
+        bottom: -10%; // Relative to .text-layers
+        left: 10%; // Shift left
+        transform: translate(-50%, 50%) rotate(10deg); // Rotate and adjust
+        @media (min-width: 1024px) {
+        font-size: 2rem;
+        bottom: -20%;
+        left: 20%;
+        }
+    }
+
+    .role-label {
+        font-size: 1.8rem;
+        opacity: 0.8;
+        color: $color-text-light;
+        bottom: -50%;
+        right: 20%;
+        transform: translateX(50%);
+        @media (min-width: 1024px) {
+            font-size: 2.2rem;
+            right: 20%;
+            bottom: -50%;
+        }
+    }
+
+    // --- Floating Icons ---
+    .floating-icon {
+        position: absolute;
+        font-size: 2.5rem; // Slightly larger
+        opacity: 0.6;
+        color: $color-text-light;
+        pointer-events: none; // Make them not interfere with clicks
+
+        &.icon-pen {
+            top: -70%;
+            left: 30%;
+            transform: rotate(255deg);
+        }
+
+        &.icon-text {
+            top: 200px;
+            /* left: 0%; */
+            transform: rotate(320deg);
+            border: 1px solid lightgrey;
+            padding: 10px;
+        }
+    }
+}
+
+// --- Portrait Styling ---
+.portrait-container {
+    opacity: 0.7;
+    position: absolute;
+    bottom: 0; // Align to the bottom of .hero-content
+    left: 50%;
+    transform: translateX(-50%); // Center horizontally
+    z-index: 15; // Image on top of text
+    width: 100%;
+    max-width: 450px; // Control max width of the image itself
+    height: auto; // Allow height to adjust
+
+    @media (min-width: 1024px) {
+        // left: 35%; // Shift image to the left on larger screens
+        transform: translateX(-50%);
+        max-width: 550px; // Larger image on desktop
+    }
+
+    .portrait-placeholder {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        width: 100%;
+        height: 100%;
+
+        .hero-portrait {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            filter: grayscale(100%) contrast(1.2); // Apply grayscale and contrast
+        }
+    }
+}
+
+// --- SCROLL DOWN INDICATOR STYLES ---
+
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 10;
+}
+
+.scroll-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: $color-text-light; /* Use light text color from global vars */
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.scroll-text {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.scroll-arrow-icon {
+    font-size: 1.5rem;
+    
+    .arrow-down {
+        display: block;
+        animation: bounce-scroll 1.5s infinite;
+    }
+}
+
+@keyframes bounce-scroll {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-5px);
+    }
+    60% {
+        transform: translateY(-2px);
+    }
+}

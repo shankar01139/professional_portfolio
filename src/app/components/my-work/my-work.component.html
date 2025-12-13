@@ -1,0 +1,42 @@
+<section class="my-work-section">
+  <div class="container my-work-content">
+    
+    <div class="title-wrapper">
+      <h2 class="section-title">My Works</h2>
+    </div>
+
+    <div class="projects-grid">
+      <a *ngFor="let project of projects" 
+         [routerLink]="['/project', project.id]" 
+         class="project-card"
+         [ngClass]="'size-' + project.size">
+        
+        <div class="image-container">
+            <img [src]="project?.size === 2 ? 'assets/AI_hub.jpg' : 'assets/one_AI.jpg'" 
+                 alt="my-work-content" 
+                 class="mockup-img">
+        </div>
+
+        <div class="card-visible-title">
+            <h3 class="title-text">{{ project.title }}</h3>
+        </div>
+        
+        <div class="card-hover-overlay">
+            <div class="card-content">
+                <p class="category">{{ project.category }}</p>
+                <h3 class="card-details-title">{{ project.details }}</h3>
+                <span class="view-link">View Project &rarr;</span> 
+            </div>
+        </div>
+        
+      </a> </div>
+    
+    <div class="social-links-footer">
+      <span class="view-on-text">View on</span>
+      <a href="YOUR_BEHANCE_URL" target="_blank" class="social-icon behance-icon">
+      </a>
+      <a href="YOUR_DRIBBBLE_URL" target="_blank" class="social-icon dribbble-icon">
+      </a>
+    </div>
+  </div>
+</section>

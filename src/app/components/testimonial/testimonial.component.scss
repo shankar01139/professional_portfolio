@@ -1,0 +1,209 @@
+@import '../../../styles.scss';// Access global colors/variables
+
+$background-color: #f8f8f8; 
+$text-color: #333;
+$highlight-color: #000; 
+$title-font-family: 'Georgia', serif;
+$nav-width: 250px; // Increased width for the photo column
+
+.testimonials-section {
+  padding: 80px 40px;
+  background-color: $background-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-title {
+  font-family: $title-font-family;
+  font-size: 3rem;
+  font-weight: 700;
+  color: $text-color;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.testimonial-content {
+  display: flex;
+  max-width: 1100px;
+  width: 100%;
+  align-items: center;
+}
+
+// --- 1. Client Navigation (Vertical Carousel) ---
+.client-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 500px; 
+  margin-right: 50px;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: $text-color;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.photo-carousel-window {
+  height: 100%;
+  overflow-y: auto; 
+  overflow-x: hidden;
+  width: $nav-width; 
+  position: relative;
+  
+  // --- HIDE SCROLLBAR STYLES ---
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+}
+
+.photo-list {
+  display: flex;
+  flex-direction: column;
+  // NOTE: CSS transition is intentionally REMOVED here. 
+  // Smooth scrolling is controlled by 'behavior: smooth' in TypeScript.
+}
+
+.photo-container {
+  height: 100px; 
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  background-color: #000;
+  
+  // Base style for inactive photos
+  opacity: 0.7;
+  transform: scale(0.9);
+  
+  // Style for the currently active photo
+  &.active {
+    height: 250px; // Increased height for the main photo
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.client-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.client-badge {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px 0;
+    background-color: rgba(0, 0, 0, 0.6); 
+    color: white;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+// --- 2. Quote and Detail Area (Text Only) ---
+.quote-area {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+
+.quote-text-container {
+    flex-grow: 1;
+    max-width: 800px; 
+}
+
+.quote-text {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  font-style: italic;
+  color: $text-color;
+  margin-bottom: 30px;
+  
+  // Style the bold/highlighted words (rendered by the pipe)
+  ::ng-deep b {
+    color: $highlight-color;
+    font-weight: 900;
+    font-style: normal;
+  }
+}
+
+.author-details {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: lighten($text-color, 20%);
+}
+
+// --- Responsive Adjustments ---
+@media (max-width: 992px) {
+  .testimonial-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .client-nav {
+    flex-direction: row; 
+    height: auto;
+    width: 100%;
+    justify-content: center;
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+  
+  .photo-carousel-window {
+    width: 80%;
+    height: 150px; 
+    overflow-y: hidden; // Hide vertical scrollbar when horizontal
+    overflow-x: auto; // Enable horizontal scrolling
+
+     // Hide scrollbar on mobile horizontal view
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+  }
+  
+  .photo-list {
+    flex-direction: row; 
+    width: fit-content;
+    height: 100%;
+  }
+
+  .photo-container {
+      min-height: 100px;
+      min-width: 100px;
+      margin-right: 15px;
+      margin-bottom: 0;
+      background-color: #000;
+      &.active {
+          min-height: 150px;
+          min-width: 150px;
+      }
+  }
+
+  .quote-area {
+    flex-direction: column;
+    text-align: center;
+  }
+}

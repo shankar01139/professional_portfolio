@@ -1,0 +1,152 @@
+@import '../../../styles.scss';
+
+// Assuming $color-background is very dark (e.g., #121212)
+$color-dark-theme: #1a1a1a;
+$color-text-accent: #00ff00; // Bright status color
+
+.project-info-container {
+    background-color: $color-background;
+    color: $color-text-light;
+    min-height: 100vh;
+    padding-top: 50px; // Space below the header overlay
+}
+
+.project-content {
+    width: 100%;
+}
+
+// --- 1. PROJECT HEADER/HERO (The top dark section with the title) ---
+.project-hero-header {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 0; // The main mockup will butt up against this
+}
+
+.project-header-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.1; // Make the background subtle
+    filter: blur(5px);
+}
+
+.header-overlay-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.project-category {
+    font-size: 1rem;
+    color: $color-text-medium;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.project-title {
+    font-size: 5rem;
+    font-family: 'Publico Headline Web', serif;
+    font-weight: 700;
+    line-height: 1.1;
+    color: $color-text-light;
+}
+
+.project-summary {
+    position: relative;
+    z-index: 10;
+    font-size: 1.1rem;
+    color: $color-text-medium;
+    max-width: 700px;
+    text-align: center;
+    margin: 0 auto 3rem;
+}
+
+// --- 2. MAIN MOCKUP ---
+.main-mockup-wrapper {
+    position: relative;
+    z-index: 15; // Ensure it sits above the hero section
+    margin-bottom: 5rem;
+    padding: 0 40px;
+    
+    .main-mockup {
+        width: 100%;
+        max-width: 1000px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+}
+
+// --- 3. PROJECT DETAIL SECTIONS ---
+.project-body-sections {
+    max-width: 1000px;
+    margin-bottom: 5rem;
+}
+
+.detail-section {
+    padding: 3rem 0;
+}
+
+.section-heading {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: $color-text-light;
+    opacity: 0.8;
+}
+
+.section-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    color: $color-text-medium;
+}
+
+.section-image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 2rem;
+    
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.thanks-wrapper {
+    text-align: center;
+    padding: 5rem 0 3rem;
+    
+    .thanks-text {
+        font-size: 3rem;
+        font-family: 'Publico Headline Web', serif;
+        font-weight: 700;
+        opacity: 0.7;
+    }
+}
+
+// --- Responsive Adjustments ---
+@media (max-width: 768px) {
+    .project-title {
+        font-size: 3rem;
+    }
+    .section-image-grid {
+        grid-template-columns: 1fr;
+    }
+}

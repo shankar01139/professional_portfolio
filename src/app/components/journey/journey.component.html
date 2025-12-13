@@ -1,0 +1,46 @@
+<section class="journey-section">
+  <div class="container journey-content">
+    
+    <div class="title-wrapper">
+      <h4 class="section-tag">My Journey</h4>
+      <h2 class="section-title">The Path That Built My Design Vision</h2>
+    </div>
+
+    <div class="timeline-line">
+      <div *ngFor="let job of jobExperiences; let i = index" 
+           class="timeline-dot"
+           [class.active]="i === currentIndex" (click)="goToCard(i)">
+      </div>
+    </div>
+    
+    <div class="job-card-carousel">
+      
+      <div class="job-card" 
+           (click)="goToNextCard()"  
+           [class.last-card]="currentIndex === jobExperiences.length - 1">
+        
+        <div class="job-header">
+          <div *ngIf="currentJob.isCurrent" class="status-indicator">
+            <span class="status-dot"></span>
+            {{ currentJob.statusText }}
+          </div>
+          <p class="job-role">{{ currentJob.role }}</p>
+        </div>
+        
+        <h3 class="job-company">
+          {{ currentJob.company }}
+        </h3>
+        <p *ngIf="currentJob.poweredBy" class="job-powered">
+          (Powered by {{ currentJob.poweredBy }})
+        </p>
+        
+        <p class="job-duration">{{ currentJob.duration }}</p>
+        
+        <p class="job-description">
+          {{ currentJob.description }}
+        </p>
+        
+      </div>
+    </div>
+  </div>
+</section>
