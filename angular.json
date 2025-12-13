@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pradeep-portfolio": {
+    "professional_portfolio": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/pradeep-portfolio",
+            "outputPath": "dist/professional_portfolio",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "pradeep-portfolio:build"
+            "browserTarget": "professional_portfolio:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "pradeep-portfolio:build:production"
+              "browserTarget": "professional_portfolio:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pradeep-portfolio:build"
+            "browserTarget": "professional_portfolio:build"
           }
         },
         "test": {
@@ -114,18 +114,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "pradeep-portfolio:serve"
+            "devServerTarget": "professional_portfolio:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "pradeep-portfolio:serve:production"
+              "devServerTarget": "professional_portfolio:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "pradeep-portfolio",
+  "defaultProject": "professional_portfolio",
   "cli": {
     "analytics": "1613e6ba-a6fa-4c1a-bb01-987980ef68e5"
   }
