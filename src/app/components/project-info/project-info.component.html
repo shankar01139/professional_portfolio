@@ -1,42 +1,233 @@
-<section class="project-info-container">
-    <div *ngIf="project" class="project-content">
 
-        <div class="project-hero-header">
-            <img [src]="project.headerImage" [alt]="project.title + ' Background'" class="project-header-bg">
-            
-            <div class="header-overlay-content container">
-                <p class="project-category">{{ project.category }}</p>
-                <h1 class="project-title">{{ project.title }}</h1>
+<section class="ai-hub-showcase-section">
+    <div class="container">
+
+        <header class="ai-hub-header">
+            <div>
+                <div class="meta-info">
+                    <span class="arrow"> <img src="assets/arrow.png" alt="Avatar" class="avatar-placeholder"></span>
+                    <span class="section-tag">{{ sectionTitle }}</span>
+                </div>
+
+                <h1 class="design-statement" [innerHTML]="designStatement">
+                </h1>
+            </div>
+            <div class="user-meta-right">
+                <div class="user-meta">
+                    <div class="user-meta-container">
+                        <div class="profile-group">
+                            <div class="profile-pic-wrapper">
+                                <img src="assets/pradeep1.jpg" alt="{{ userName }}"
+                                    class="profile-pic avatar-placeholder" />
+                            </div>
+
+                            <div class="text-info">
+                                <p class="name">{{ userName }}</p>
+                                <p class="role">{{ userRole }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <img src="assets/pradeep1.jpg" alt="Avatar" class="avatar-placeholder">
+            <span>{{ userName }}</span>
+            <p class="role">{{ userRole }}</p> -->
+                </div>
+                <span class="time-tag">
+                    <h1>2</h1>{{ timeTag }}
+                </span>
+                <div class="tags-container">
+                    <span class="tag tag-dark">Tax Management</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="mockup-container">
+            <img [src]="mockupImagePath" alt="AI Hub App Mockup Light and Dark Theme" class="app-mockup-img">
+        </div>
+
+    </div>
+</section>
+<div class="cs-section-container">
+    <div class="content-wrapper">
+
+        <div class="column challenges-column">
+            <h2 class="title challenges-title">
+                <span class="link-arrow"> <img src="assets/arrow.png" alt="Avatar" class="avatar-placeholder"></span>
+                Challenges
+            </h2>
+            <p class="description challenges-description">
+                Yorem ipsum dolor sit amet, consectetur adiClass aptent taciti sociosqu ad lito ra torquent per conubia
+                nostra, per inceptos himenaeos.
+            </p>
+        </div>
+
+        <div class="graphic-center">
+            <div class="circle-blur">
+                <img src="assets/line.png" alt="Avatar"
+                        class="wavy-line">
+            </div>
+        </div>
+
+        <div class="column solution-column">
+            <h2 class="title solution-title">
+                <span>Solution</span> <span class="link-arrow"> <img src="assets/arrow.png" alt="Avatar"
+                        class="avatar-placeholder"></span>
+            </h2>
+            <p class="description solution-description">
+                Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et v runt per conubia
+                nostra, per inceptos himenaeos.
+            </p>
+        </div>
+
+    </div>
+</div>
+<section class="design-process-section">
+    <h2 class="section-heading">Process</h2>
+    
+    <div class="process-flow-container">
+        <div class="curved-arrows">
+            <img src="assets/arraow_curved.png" alt="Avatar" class="arraow_curved">
+            <img src="assets/arraow_curved.png" alt="Avatar" class="arraow_curved">
+            <img src="assets/arraow_curved.png" alt="Avatar" class="arraow_curved">
+            <img src="assets/arraow_curved.png" alt="Avatar" class="arraow_curved">
+        </div>
+        <div class="process-stages-wrapper">
+            <div class="stage-circle empathize-stage">
+                <h3 class="stage-title">Empathize</h3>
+                <ul class="tags-list">
+                    <li class="tag-item">User Research</li>
+                    <li class="tag-item">User Research</li>
+                    <li class="tag-item">User Research</li>
+                    <li class="tag-item">User Research</li>
+                </ul>
             </div>
             
-            <div class="project-summary container">
-                <p>{{ project.summary }}</p>
+            <div class="stage-circle define-stage">
+                <h3 class="stage-title">Define</h3>
+                <ul class="tags-list">
+                    <li class="tag-item">User Research</li>
+                    <li class="tag-item">User Research</li>
+                    <li class="tag-item">User Research</li>
+                    <li class="tag-item">User Research</li>
+                </ul>
+            </div>
+            
+            <div class="stage-circle ideate-stage">
+                <h3 class="stage-title">Ideate</h3>
+                <ul class="tags-list">
+                    <li class="tag-item">User Research</li>
+                    <li class="tag-item">User Research</li>
+                    <li class="tag-item">User Research</li>
+                    <li class="tag-item">User Research</li>
+                </ul>
+            </div>
+            
+            <div class="stage-circle prototype-stage">
+                <h3 class="stage-title">Prototype</h3>
+                <ul class="tags-list">
+                    <li class="tag-item">User Research</li>
+                    <li class="tag-item">User Research</li>
+                    <li class="tag-item">User Research</li>
+                    <li class="tag-item">User Research</li>
+                </ul>
+            </div>
+            
+            <div class="stage-circle test-stage">
+                <h3 class="stage-title">Test</h3>
+                <ul class="tags-list">
+                    <li class="tag-item">User Research</li>
+                    <li class="tag-item">User Research</li>
+                    <li class="tag-item">User Research</li>
+                    <li class="tag-item">User Research</li>
+                </ul>
+            </div>
+            
+        </div>
+        <div class="curved-arrows">
+            <img src="assets/arraow_curved.png" alt="Avatar" class="arraow_curved bottom-arrow d-none">
+            <img src="assets/arraow_curved.png" alt="Avatar" class="arraow_curved bottom-arrow d-none">
+            <img src="assets/arraow_curved.png" alt="Avatar" class="arraow_curved bottom-arrow">
+            <img src="assets/arraow_curved.png" alt="Avatar" class="arraow_curved bottom-arrow d-none">
+        </div>
+    </div>
+</section>
+<section class="design-evolution-section">
+    <div class="evolution-grid">
+        
+        <div class="evolution-stage sketch-stage">
+            <h3 class="stage-label">Sketch</h3>
+            <div class="stage-image sketch-placeholder">
+                <img src="assets/sketch.png" alt="Paper Sketch" class="evolution-img">
             </div>
         </div>
         
-        <div class="main-mockup-wrapper container">
-            <img [src]="project.mockups[0].url" [alt]="project.mockups[0].alt" class="main-mockup">
+        <div class="flow-arrow">→</div>
+        
+        <div class="evolution-stage wireframe-stage">
+            <h3 class="stage-label">Wireframe</h3>
+            <div class="stage-image wireframe-placeholder">
+                <img src="assets/wireframe.png" alt="Digital Wireframe" class="evolution-img">
+            </div>
         </div>
+        
+        <div class="flow-arrow">→</div>
+        
+        <div class="evolution-stage ui-stage">
+            <h3 class="stage-label">UI</h3>
+            <div class="stage-image ui-placeholder">
+                <img src="assets/wireframe.png" alt="Final UI Design" class="evolution-img">
+            </div>
+        </div>
+        
+    </div>
+</section>
+<section class="detailed-screens-section">
+    <div class="screens-container">
+        <div class="tier-row tier-1-overview">
+            <div class="tier-content tier-1-grid">
+                <div class="screen-block screen-overview-1">
+                    <img src="assets/project/image1.png" alt="File Upload Management Screen" class="screen-img">
+                </div>
 
-        <div class="project-body-sections container">
-            <div *ngFor="let section of project.sections; let i = index" class="detail-section">
-                <h2 class="section-heading">{{ section.title }}</h2>
-                <p class="section-text">{{ section.content }}</p>
-                
-                <div *ngIf="i === 1" class="section-image-grid"> 
-                    <img src="assets/wireframe_small_1.png" alt="Wireframe 1">
-                    <img src="assets/wireframe_small_2.png" alt="Wireframe 2">
+                <div class="screen-block screen-overview-2">
+                    <img src="assets/project/image2.png" alt="Main Chat Interface with Prompts" class="screen-img">
                 </div>
             </div>
-            
-            <div class="thanks-wrapper">
-                <p class="thanks-text">Thanks for Watching</p>
+        </div>
+        
+        <div class="section-separator"></div>
+
+        <div class="tier-row tier-2-flow-detail">
+            <div class="tier-content tier-2-grid">
+                <div class="screen-block screen-detail-1">
+                    <img src="assets/project/image3.png" alt="Full Tax Audit Form Summary" class="screen-img">
+                </div>
+                
+                <div class="screen-block screen-detail-2">
+                    <img src="assets/project/image4.png" alt="Cropped Chat Summary Panel" class="screen-img">
+                </div>
+                
             </div>
         </div>
+        
+    </div>
+</section>
+<section class="conclusion-section">
+    <h2 class="thanks-message">Thanks for Watching</h2>
+</section>
+<section class="next-project-section">
+    <a href="/project/2" class="next-project-link">
+        
+        <div class="project-image-container">
+            <img 
+                src="assets/wireframe.png" 
+                alt="Next Project: [Project Name]" 
+                class="project-image"
+            >
+        </div>
 
-    </div>
-    
-    <div *ngIf="!project" class="loading-message container">
-        <p>Loading project details...</p>
-    </div>
+        <div class="next-project-overlay">
+            <h2 class="next-title">Next Project</h2>
+            <div class="large-arrow">→</div>
+        </div>
+    </a>
 </section>

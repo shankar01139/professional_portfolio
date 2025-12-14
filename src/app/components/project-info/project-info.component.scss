@@ -1,152 +1,934 @@
 @import '../../../styles.scss';
 
 // Assuming $color-background is very dark (e.g., #121212)
-$color-dark-theme: #1a1a1a;
-$color-text-accent: #00ff00; // Bright status color
+$dark-bg: #000000;
+$text-light: #f0f0f0;
+$text-faded: #999999;
+$accent-color: #6a1a97; // Purple accent
+$accent-pink: #EA4C89;
 
-.project-info-container {
-    background-color: $color-background;
-    color: $color-text-light;
+.ai-hub-showcase-section {
+    background-color: $dark-bg;
+    padding: 80px 0 0 0;
+    color: $text-light;
     min-height: 100vh;
-    padding-top: 50px; // Space below the header overlay
-}
-
-.project-content {
-    width: 100%;
-}
-
-// --- 1. PROJECT HEADER/HERO (The top dark section with the title) ---
-.project-hero-header {
-    position: relative;
-    width: 100%;
-    min-height: 500px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    margin-bottom: 0; // The main mockup will butt up against this
 }
 
-.project-header-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.1; // Make the background subtle
-    filter: blur(5px);
+    padding: 0 20px;
 }
 
-.header-overlay-content {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    margin-bottom: 3rem;
+/* --- Header Text Block --- */
+.ai-hub-header {
+    margin-bottom: 50px;
+    padding-top: 50px;
+    display: flex;
 }
 
-.project-category {
+.meta-info {
+    display: flex;
+    align-items: center;
     font-size: 1rem;
-    color: $color-text-medium;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 0.5rem;
+    color: $text-faded;
+    margin-bottom: 20px;
+    gap: 20px;
+
+    .section-tag,
+    .time-tag {
+        font-size: 1em;
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 15px;
+
+        .user-meta {
+            order: -1;
+        }
+    }
 }
 
-.project-title {
-    font-size: 5rem;
-    font-family: 'Publico Headline Web', serif;
-    font-weight: 700;
-    line-height: 1.1;
-    color: $color-text-light;
+.time-tag {
+    position: absolute;
+    right: -200px;
+    bottom: 70%;
+    transform: rotate(45deg);
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
 }
 
-.project-summary {
-    position: relative;
-    z-index: 10;
-    font-size: 1.1rem;
-    color: $color-text-medium;
-    max-width: 700px;
-    text-align: center;
-    margin: 0 auto 3rem;
-}
+.link-arrow {
+    width: 50%;
 
-// --- 2. MAIN MOCKUP ---
-.main-mockup-wrapper {
-    position: relative;
-    z-index: 15; // Ensure it sits above the hero section
-    margin-bottom: 5rem;
-    padding: 0 40px;
-    
-    .main-mockup {
+    img {
         width: 100%;
+    }
+}
+
+.user-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+
+    .avatar-placeholder {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: $accent-color;
+    }
+
+    .role {
+        color: $text-faded;
+    }
+}
+
+.design-statement {
+    font-size: 2rem;
+
+    font-weight: 800;
+    line-height: 1.2;
+    max-width: 625px;
+    margin: 0 auto 30px 0;
+
+    /* Highlight specific words based on the image */
+    .pain-word {
+        color: $accent-pink;
+        // Use filter: drop-shadow for the glowing text effect
+        filter: drop-shadow(0 0 5px rgba($accent-pink, 0.5));
+    }
+
+    .color-word {
+        // Assuming a secondary bright color, like a light blue/cyan
+        color: #00FFFF;
+        filter: drop-shadow(0 0 5px rgba(#00FFFF, 0.5));
+    }
+}
+
+.tags-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 50px 0px;
+    transform: rotate(322deg);
+
+    .tag {
+        border: 1px solid $text-faded;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.8em;
+        color: $text-faded;
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* --- App Mockup Image Container --- */
+.mockup-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* margin-top: -100px; */
+    width: 60%;
+    /* align-items: center; */
+    margin: 0 auto;
+
+    @media (max-width: 768px) {
+        margin-top: -50px;
+    }
+
+    .app-mockup-img {
+        width: 80%;
         max-width: 1000px;
         height: auto;
         display: block;
-        margin: 0 auto;
-        border-radius: 20px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        /* Add a subtle lift/shadow effect */
+        filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.5));
+        transition: transform 0.5s ease;
+
+        &:hover {
+            transform: scale(1.01);
+        }
+
+        @media (max-width: 768px) {
+            width: 100%;
+        }
     }
 }
 
-// --- 3. PROJECT DETAIL SECTIONS ---
-.project-body-sections {
-    max-width: 1000px;
-    margin-bottom: 5rem;
+/* --- Variables --- */
+:root {
+    --text-color-primary: #ffffff;
+    --text-color-secondary: #aaaaaa;
+    /* Greyed out role text */
+    --pic-size: 50px;
+    /* Size of the profile picture */
+    --icon-size: 15px;
+    /* Size of the send icon */
 }
 
-.detail-section {
-    padding: 3rem 0;
+.user-meta-container {
+    /* Set a dark background if this component is used standalone, otherwise match parent */
+    background-color: #000000;
+    padding: 10px;
+    display: inline-block;
+    /* Keeps the container tight to its content */
+}
+
+.profile-group {
+    display: flex;
+    align-items: center;
+    position: relative;
+    /* Context for absolute icon */
+}
+
+/* --- Profile Picture --- */
+.profile-pic-wrapper {
+    width: var(--pic-size);
+    height: var(--pic-size);
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- Send Icon (White Arrow) --- */
+.send-icon-wrapper {
+    position: absolute;
+    /* Position the icon to overlap the bottom-left corner of the profile pic */
+    top: calc(var(--pic-size) / 2);
+    /* Move down slightly */
+    left: -10px;
+    /* Move left outside the main flow */
+    z-index: 10;
+
+    /* Make the container for the icon a little bigger for breathing room */
+    width: var(--icon-size);
+    height: var(--icon-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Optional: Small rotation to match the image angle */
+    transform: rotate(20deg);
+}
+
+.send-icon {
+    width: 100%;
+    height: 100%;
+}
+
+/* --- Text Information --- */
+.text-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-color-primary);
+    margin: 0;
+    padding: 0;
+}
+
+.role {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-color-secondary);
+    margin: 0;
+    padding: 0;
+}
+
+.user-meta-right {
+    position: relative;
+}
+
+/* --- Variables --- */
+:root {
+    --bg-light-grey: #f4f4f4;
+    --text-dark: #333333;
+    --red-highlight: #e55e5e;
+    --green-highlight: #6aa84f;
+    --circle-color: #3b3b8c;
+    --font-family: 'Inter', sans-serif;
+}
+
+.cs-section-container {
+    background-color: #000;
+    padding: 0px 50px;
+    /* Ample padding for a section */
+    font-family: var(--font-family);
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-wrapper {
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    padding: 50px;
+}
+
+/* --- Text Columns --- */
+.column {
+    max-width: 250px;
+    position: absolute;
+    /* Adjust text alignment based on position */
+}
+
+.challenges-column {
+    text-align: left;
+    bottom: 0;
+    left: 0;
+}
+
+.solution-column {
+    text-align: right;
+    top: 0;
+    right: 0;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    /* Ensure the title and decorator fit correctly */
+    line-height: 1;
+}
+
+/* Styling for the decorative lines next to the title */
+.decorator {
+    display: inline-block;
+    height: 2px;
+    width: 30px;
+    margin: 0 10px;
+    border-radius: 1px;
+}
+
+.challenges-title {
+    /* Puts the decorator before the text */
+    justify-content: flex-start;
+}
+
+.solution-title {
+    /* Puts the decorator after the text */
+    justify-content: flex-end;
+    /* Reverse the order to put the line on the right */
+}
+
+.red-line {
+    background-color: var(--red-highlight);
+}
+
+.green-line {
+    background-color: var(--green-highlight);
+}
+
+.description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-dark);
+    opacity: 0.7;
+    /* Lighten the text color */
+}
+
+/* --- Center Graphic --- */
+.graphic-center {
+    // width: 400px;
+    // height: 400px;
+    // display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.circle-blur {
+    width: 250px;
+    height: 250px;
+    background-color: #212060;
+    border-radius: 50%;
+
+    /* The key to the soft, glowing effect */
+    // filter: blur(5px); 
+    opacity: 0.9;
+
+    position: relative;
+    overflow: hidden;
+    /* Keep the path contained */
+}
+
+/* Wavy Line SVG */
+.wavy-line {
+    position: absolute;
+    width: 100%;
+    height: 35%;
+    /* Position the line to be centered visually */
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    overflow: visible;
+    /* Allows path to extend slightly outside the blurred circle */
+    stroke: #FFFFFF;
+    stroke-width: 2;
+    fill: #ffffff;
+    /* This line is slightly complex as it needs to visually extend 
+       outside the blurred circle without being blurred itself.
+       In the example, the line is drawn *over* the blur. 
+       This means the SVG must be positioned on top of the blurred circle, 
+       or the circle should be an ::after element, but keeping it inside is cleaner.
+    */
+}
+
+.cs-section {
+    background-color: #f4f4f4;
+    /* Light background */
+    padding: 100px 50px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    color: #333333;
+    /* Important: Ensure the section itself has enough height to place items at top/bottom */
+    min-height: 700px;
+}
+
+.cs-section .content-wrapper {
+    /* KEY CHANGE: Relative positioning for absolute children */
+    position: relative;
+
+    display: block;
+    /* No longer using flex to align the main wrapper items */
+    max-width: 1200px;
+    width: 100%;
+    height: 100%;
+    /* Take full height of the section */
+}
+
+/* --- Text Columns --- */
+.cs-section .column {
+    position: absolute;
+    /* KEY CHANGE: Absolute positioning for precise placement */
+    max-width: 250px;
+    padding: 0;
+    /* Remove any previous padding */
+    z-index: 10;
+    /* Ensure text is above the graphic */
+}
+
+/* 1. Challenges: Top Left */
+.cs-section .challenges-column {
+    top: 0;
+    /* Align to the top edge of content-wrapper */
+    left: 0;
+    /* Align to the left edge of content-wrapper */
+    text-align: left;
+}
+
+/* 2. Solution: Bottom Right */
+.cs-section .solution-column {
+    bottom: 0;
+    /* Align to the bottom edge of content-wrapper */
+    right: 0;
+    /* Align to the right edge of content-wrapper */
+    text-align: right;
+
+    /* Reverse the order of the line and text for right alignment */
+    flex-direction: row-reverse;
+}
+
+/* --- Center Graphic --- */
+.cs-section .graphic-center {
+    position: absolute;
+    /* Position relative to the content-wrapper */
+    width: 400px;
+    height: 400px;
+    top: 50%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    transform: translate(-50%, -50%);
+    /* Fine-tune centering */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ========================================================== */
+/* NEW: Design Process Section Styling      */
+/* ========================================================== */
+
+.design-process-section {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0px 30px 120px;
+    /* Extra padding at the bottom for the flow line */
+    text-align: center;
+    overflow: hidden;
+    /* Important for containing elements like the arrows */
 }
 
 .section-heading {
-    font-size: 2rem;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 60px;
+}
+
+.process-flow-container {
+    position: relative;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.process-stages-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* Align stages to the top */
+    gap: 10px;
+    /* Small gap between stages */
+}
+
+/* --- Stage Circles --- */
+.stage-circle {
+    /* KEY: Flex-grow to distribute space, but constrain size */
+    flex-basis: 200px;
+    flex-shrink: 0;
+    flex-grow: 1;
+
+    width: 200px;
+    height: 200px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    /* Faint white border */
+    border-radius: 50%;
+
+    position: relative;
+    /* Context for title and tags */
+    margin: 0 -30px;
+    /* Negative margin for overlapping effect */
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+    /* Faint glow effect */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+/* Specific adjustments for overlap to look visually correct */
+.empathize-stage {
+    margin-left: 0;
+}
+
+.test-stage {
+    margin-right: 0;
+}
+
+
+.stage-title {
+    font-size: 24px;
     font-weight: 600;
-    margin-bottom: 1rem;
-    color: $color-text-light;
-    opacity: 0.8;
+    margin: 0;
 }
 
-.section-text {
-    font-size: 1rem;
-    line-height: 1.7;
-    margin-bottom: 3rem;
-    color: $color-text-medium;
+/* --- Tags/User Research Elements --- */
+.tags-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    bottom: 50px;
+    /* Position below the circle */
+    width: 100%;
+
+    /* Use grid/flex to arrange tags in a cluster */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    transform: translateY(20px);
+    /* Move the tags up slightly for better overlap */
 }
 
-.section-image-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    margin-top: 2rem;
-    
-    img {
+.tag-item {
+    background-color: #1a1a1a;
+    color: #cccccc;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin: 5px 3px;
+    font-size: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    /* Optional: Small rotation for chaotic look */
+    &:nth-child(even) {
+        transform: rotate(-20deg);
+    }
+
+    &:nth-child(odd) {
+        transform: rotate(20deg);
+    }
+}
+
+/* --- Circular Arrows/Flow Lines --- */
+/* This is complex to do purely in CSS; using a simple placeholder */
+.circular-arrows {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-50%);
+    z-index: 5;
+    /* Place behind the stage circles */
+
+    /* In a real project, you'd use a background SVG here 
+       or multiple pseudo-elements (::before/::after) to draw the curves. */
+
+    /* Simple visual placeholder for the top loop flow: */
+    /*
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    */
+}
+
+.arraow_curved {
+    width: 200px;
+}
+
+.bottom-arrow {
+    position: absolute;
+    transform: rotate(180deg);
+
+    &.last-item {
         width: 100%;
-        height: auto;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
 }
 
-.thanks-wrapper {
+.d-none {
+    display: none;
+}
+
+/* ========================================================== */
+/* NEW: Design Evolution Section Styling      */
+/* ========================================================== */
+
+.design-evolution-section {
+    /* Uses a light background similar to the Challenges/Solutions section */
+    background-color: #000;
+    padding: 0px 50px 100px 50px;
+    color: #333333;
     text-align: center;
-    padding: 5rem 0 3rem;
-    
-    .thanks-text {
-        font-size: 3rem;
-        font-family: 'Publico Headline Web', serif;
-        font-weight: 700;
-        opacity: 0.7;
+}
+
+.evolution-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Vertically align the stages and arrows */
+    max-width: 1300px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.evolution-stage {
+    flex: 1 1 30%;
+    /* Gives equal width to the three stages */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stage-label {
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    color: #fff;
+    /* The stage labels in the image are slightly lightened */
+    opacity: 0.9;
+}
+
+.stage-image {
+    width: 100%;
+    max-width: 400px;
+    /* Constrain image size */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    // background-color: #ffffff; /* Background for images */
+}
+
+.evolution-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    /* Styles to match the mockups' slightly rounded, framed look */
+    border-radius: 12px;
+}
+
+/* Specific styling for the paper Sketch stage to distinguish it */
+.sketch-placeholder {
+    /* If the sketch is meant to look like paper, adjust background/shadow */
+    background-color: #f7f7f7;
+}
+
+/* --- Flow Arrows --- */
+.flow-arrow {
+    font-size: 40px;
+    color: #888888;
+    margin: 0 10px;
+    flex-shrink: 0;
+    /* Prevents arrow from shrinking */
+}
+
+/* ========================================================== */
+/* NEW: Detailed Screens Section Styling      */
+/* ========================================================== */
+
+.detailed-screens-section {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0px 50px 50px 50px;
+    text-align: center;
+}
+
+.main-heading {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 60px;
+    letter-spacing: 1px;
+}
+
+.screens-container {
+    max-width: 1400px;
+    /* Wide container for detailed views */
+    margin: 0 auto;
+}
+
+.tier-row {
+    margin-bottom: 80px;
+    text-align: left;
+}
+
+.tier-label {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    padding-left: 10px;
+    color: #cccccc;
+}
+
+.screen-block {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    // background-color: #1a1a1a; /* Dark background for the image containers */
+}
+
+.screen-img {
+    display: block;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 15px;
+}
+
+/* --- TIER 1 LAYOUT: 2 UNEVEN Columns (File Upload vs Chat) --- */
+.tier-1-grid {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+
+    .screen-img {
+        height: 250px;
+        width: 100%;
     }
 }
 
-// --- Responsive Adjustments ---
-@media (max-width: 768px) {
-    .project-title {
-        font-size: 3rem;
+.tier-2-grid {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+
+    .screen-img {
+        height: 450px;
+        width: 100%;
     }
-    .section-image-grid {
-        grid-template-columns: 1fr;
-    }
+}
+
+// .screen-overview-1 {
+//     flex: 6; /* Takes more space for the detailed file upload/dashboard */
+// }
+// .screen-overview-2 {
+//     flex: 4; /* Takes less space for the simpler chat interface */
+// }
+
+
+/* --- TIER 2 LAYOUT: 2 Columns for detailed comparison/views --- */
+.tier-2-grid {
+    display: flex;
+    gap: 20px;
+}
+
+
+/* Optional Separator Styling */
+.section-separator {
+    width: 90%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    // margin: 40px auto 40px;
+}
+
+/* ========================================================== */
+/* NEW: Conclusion Section Styling (Gradient Text)  */
+/* ========================================================== */
+
+.conclusion-section {
+    /* Assuming a dark background for the gradient to fade into */
+    background-color: #000000;
+    padding: 0px 50px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.thanks-message {
+    /* Core size and dimension constraints */
+    width: 513px;
+    height: 53px;
+    /* This height will likely be dictated by line-height */
+
+    /* Typography */
+    font-family: 'Publico Headline Web', serif;
+    /* Fallback font added */
+    font-style: normal;
+    font-weight: 700;
+    font-size: 53px;
+    line-height: 53px;
+    text-align: center;
+
+    /* Gradient Text Effect (The Core Requirement) */
+    background: linear-gradient(180deg, #777777 0%, #000000 100%);
+
+    /* Apply background as clip/fill */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    /* Standard CSS properties */
+
+    /* Flex context from the original design tool spec */
+    flex: none;
+    order: 5;
+    flex-grow: 0;
+    margin: 0;
+    /* Remove default margin */
+}
+
+/* ========================================================== */
+/* Next Project Banner Styling (Full-Screen Overlay) */
+/* ========================================================== */
+
+.next-project-section {
+    background-color: #fff;
+    padding: 0;
+}
+
+.next-project-link {
+    display: block;
+    position: relative;
+    width: 100%;
+    /* Define a significant height to make it a dominant feature */
+    height: 500px;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* --- Image Container --- */
+.project-image-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.project-image {
+    // width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin: 50px;
+    display: block;
+    /* Darken image slightly for better text contrast */
+    filter: brightness(0.3);
+    transition: filter 0.4s ease-in-out;
+    border-radius: 2px solid #6a1a97;
+    border-radius: 20px;
+}
+
+/* --- Overlay Content (Centered) --- */
+.next-project-overlay {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Ensure content is centered */
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    pointer-events: none;
+    /* Allows the click to pass through to the <a> tag */
+}
+
+.next-title {
+    /* Huge, dominating title */
+    font-size: 30px;
+    font-weight: 800;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.large-arrow {
+    /* Massive arrow below the text */
+    font-size: 25px;
+    line-height: 1;
+    border-radius: 20px;
+    border: 1px solid #fff;
+    padding: 10px;
+    width: 50px;
+}
+
+/* Hover Effect: Less darkening on image, making it pop */
+.next-project-link:hover .project-image {
+    filter: brightness(0.4);
 }

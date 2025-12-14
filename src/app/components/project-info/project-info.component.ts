@@ -1,51 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+// project-info.component.ts
 
-// ... (Interface ProjectDetail remains the same) ...
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-project-info',
+  selector: 'app-project-info', // Your existing selector
   templateUrl: './project-info.component.html',
   styleUrls: ['./project-info.component.scss']
 })
-export class ProjectInfoComponent implements OnInit {
-  projectId: string | null = null;
-  project: any = null; // Use any for simplicity with placeholder data
-
-  constructor(private route: ActivatedRoute) { }
-
-  ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      this.projectId = params.get('id');
-      if (this.projectId) {
-        this.loadProjectDetails(this.projectId);
-      }
-    });
-  }
-
-  loadProjectDetails(id: string): void {
-    // --- Placeholder Data Matching Visuals ---
-    this.project = {
-      id: id,
-      title: 'AI Interaction High',
-      category: 'UX/UI Design & Prototyping',
-      summary: 'A comprehensive case study detailing the process of designing a seamless, dark-themed platform for advanced AI model interaction and configuration.',
-      headerImage: 'assets/project-header-bg.jpg', // Placeholder for the top background image
-      mockups: [
-        { url: 'assets/ai_mockup_main.png', alt: 'Main AI Interaction Screen' },
-        { url: 'assets/mobile_app_mockup.png', alt: 'Companion Mobile App' },
-      ],
-      sections: [
-        { 
-          title: '01. Goal & Context', 
-          content: 'The goal was to move beyond conventional interfaces and deliver a fluid, high-contrast dark experience focused on reducing cognitive load for power users.',
-        },
-        { 
-          title: '02. Wireframes & Flow', 
-          content: 'Early stages focused on modularity, allowing users to build complex workflows efficiently. We ensured the mobile experience mirrored the core functionality of the desktop platform.',
-        }
-        // ... more sections would follow
-      ]
-    };
-  }
+export class ProjectInfoComponent {
+  
+  // Data for the AI Hub Showcase section
+  sectionTitle = 'What is AI Hub?';
+  
+  // Statement: Note the use of <span> to apply the highlight/color effect via SCSS
+  designStatement = 'Designing experiences that ease your <span class="pain-word">pain</span> and interfaces that <span class="color-word">color</span> your world';
+  
+  // Path to the combined mockup image 
+  // IMPORTANT: Ensure this path is correct for your file (e.g., '158349d86951eb57971491c587e5bffeece494f7.jpg')
+  mockupImagePath = 'assets/AI_hub_mock.png'; 
+  
+  // Placeholder for user meta info (optional, but used in the image)
+  userName = 'Pradeepkumar';
+  userRole = 'UI/UX designer';
+  timeTag = 'Weeks';
 }
