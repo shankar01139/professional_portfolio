@@ -1,5 +1,6 @@
 @import '../../../styles.scss';
 
+
 // Assuming $color-background is very dark (e.g., #121212)
 $dark-bg: #000000;
 $text-light: #f0f0f0;
@@ -7,6 +8,232 @@ $text-faded: #999999;
 $accent-color: #6a1a97; // Purple accent
 $accent-pink: #EA4C89;
 
+.ai-hub-banner-card {
+  // Main container styling
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+  width: 100%;
+  height: 500px; /* Adjust height as needed */
+  padding: 20px;
+  
+  overflow: hidden;
+  position: relative;
+  color: #ffffff;
+  background-color: #000;
+  // Ensure content is above the background
+  z-index: 1; 
+
+  // --- Background Image Styling (using the uploaded image 7affe5.png) ---
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; // Keep behind content
+    
+    // **UPDATE THIS PATH** with your image location (image_7affe5.png)
+    background-image: url('../../../assets/projects-bg.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.4);
+  }
+}
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 10;
+}
+
+.scroll-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: $color-text-light; /* Use light text color from global vars */
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.scroll-text {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.scroll-arrow-icon {
+    font-size: 1.5rem;
+    
+    .arrow-down {
+        display: block;
+        animation: bounce-scroll 1.5s infinite;
+    }
+}
+
+@keyframes bounce-scroll {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-5px);
+    }
+    60% {
+        transform: translateY(-2px);
+    }
+}
+// --- Content Styles ---
+.tag {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.main-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  
+  // Optional: add a subtle text shadow for better contrast
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); 
+}
+
+.footer-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: #cccccc;
+  
+  .icon-placeholder {
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(45deg, #FF00FF, #00FFFF); /* Placeholder colors */
+    border-radius: 3px;
+  }
+}
+
+// --- Action Button (Download Icon) ---
+.action-button {
+  position: absolute;
+  right: 50px; /* Position to the right side */
+  top: 50%;
+  transform: translateY(-50%);
+  
+  background-color: transparent;
+  border: 2px solid #ffffff; 
+  color: #ffffff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+// --- Star Accents ---
+.star-accent {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  // This uses a simple CSS star shape (or replace with an SVG/Image)
+  &::after {
+    content: '★'; // Placeholder for star shape
+    font-size: 24px;
+    color: #ffffff;
+    line-height: 1;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.accent-top-left {
+//   top: 30px;
+  left: 20%;
+}
+
+.accent-bottom-right {
+  bottom: 30px;
+  right: 120px; 
+}
+/* ========================================================== */
+/* NEW: Key Screens Showcase Section Styling      */
+/* ========================================================== */
+
+.key-screens-section {
+    background-color: #000000; /* Dark theme continuity */
+    color: #ffffff;
+    padding: 0px 50px;
+    text-align: center;
+}
+
+.section-heading {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
+.screens-container {
+    /* Use flexbox for simple, guaranteed centering */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    flex-direction: column;
+    align-items: center;     /* Center vertically (if height were defined) */
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.central-image-block {
+    /* Constrain the size of the block itself */
+    max-width: 900px; 
+    width: 100%;
+    
+    /* Styling to make the image look like a polished app window */
+    border: 3px solid #5d40a0; /* Thin, solid border using a subtle purple color */
+    border-radius: 15px; /* Matches the rounded corners in the image */
+    box-shadow: 
+        0 0 10px rgba(93, 64, 160, 0.5), /* Inner soft glow */
+        0 0 20px rgba(0, 0, 0, 0.8); /* Outer dark shadow */
+        
+    overflow: hidden; 
+    background-color: #1a1a1a;
+}
+
+.key-screen-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
 .ai-hub-showcase-section {
     background-color: $dark-bg;
     padding: 80px 0 0 0;

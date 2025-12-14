@@ -23,4 +23,17 @@ export class ProjectInfoComponent {
   userName = 'Pradeepkumar';
   userRole = 'UI/UX designer';
   timeTag = 'Weeks';
+  scrollToSection(id: string): void {
+    const element = document.getElementById(id);
+    
+    // Check for the element and then scroll
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' // Scrolls the target element to the top of the viewport
+      });
+    } else {
+        console.error(`Target element not found for ID: ${id}`);
+    }
+  }
 }
