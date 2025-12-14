@@ -15,7 +15,9 @@ $color-text-title: rgba($color-text-light, 0.9);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: $color-background;
+    background: url('../../../assets/main-bg.gif');
+    background-position: center;
+    background-repeat: no-repeat;
 
     // Background Grain/Dot Pattern
     &::before {
