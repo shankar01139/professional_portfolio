@@ -235,7 +235,7 @@ $color-text-title: rgba($color-text-light, 0.9);
     width: 100%;
     max-width: 450px; // Control max width of the image itself
     height: auto; // Allow height to adjust
-
+padding: 100px 50px 0px;
     @media (min-width: 1024px) {
         // left: 35%; // Shift image to the left on larger screens
         transform: translateX(-50%);
